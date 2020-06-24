@@ -31,7 +31,7 @@ class Login extends Component{
           hidden: false
         });
 
-        const base_url = 'http://localhost:8000';
+        const base_url = 'https://leveltracker.azurewebsites.net';
         axios.post(base_url+'/users/login',{
           username: this.username.value,
           password: this.password.value

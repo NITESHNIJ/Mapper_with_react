@@ -22,7 +22,7 @@ class ResetPassword extends Component{
         });
         // alert(this.username.value);
 
-        const base_url = 'http://localhost:8000';
+        const base_url = 'https://leveltracker.azurewebsites.net';
         axios.post(base_url+'/resetpassword',{
           username: this.username.value,
           password: this.password.value,

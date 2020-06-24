@@ -22,7 +22,7 @@ class ForgotPassword extends Component{
         });
         //alert(this.username.value);
 
-        const base_url = 'http://localhost:8000';
+        const base_url = 'https://leveltracker.azurewebsites.net';
         axios.post(base_url+'/forgotpassword',{
           username: this.username.value
         })
