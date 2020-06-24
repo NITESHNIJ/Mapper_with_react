@@ -84,7 +84,7 @@ class Login extends Component{
                   <Button type="submit" value="submit" color="primary">Login</Button>
                 </Form>
                 <p>Please <Link to="/signup"><b>Signup</b></Link> if you are a new user...</p>
-                <p><Link to="/forgot_password"><b>Forgot Password?</b></Link>, don't worry we will help you!</p>
+                <p><Link to="/forgot_password"><b>Forgot Password?</b></Link></p>
             </Container>
           </Container>
         );

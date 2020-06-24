@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Button } from 'reactstrap';
 import Welcome from './WelcomeComponent';
 import Header from './HeaderComponent';
 import Signup from './SignupComponent';
@@ -10,12 +11,25 @@ import ResetPassword from './ResetPasswordComponent';
 
 class Main extends Component{
 
+    constructor(props){
+        super(props);
+        this.logout = this.logout.bind(this);
+    }
+
+    logout(){
+        localStorage.removeItem('token');
+        window.location.reload(false)
+        //this.props.history.push('/');
+    }
+
     render(){
         
         if(localStorage.getItem('token')){
             return(
                 <div className="App">
-                    <div>Add a lot more here!</div>
+                    <h2>Home page</h2>
+                    <div>Here the user will get all the options!</div>
+                    <Button variant="primary" size="sm" onClick={()=> this.logout()}>Logout</Button>
                 </div>
             );
         }
