@@ -51,10 +51,7 @@ class Login extends Component{
           });
         })
         .catch(error => {
-          this.setState({
-            hidden: true,
-            errmsg: error.response.data.message
-          });
+          this.props.history.push('/error')
         });
 
         //alert("Username: " + this.username.value + " Password: " + this.password.value);
@@ -86,7 +83,8 @@ class Login extends Component{
                   </FormGroup>
                   <Button type="submit" value="submit" color="primary">Login</Button>
                 </Form>
-                Please <Link to="/signup"><b>Signup</b></Link> if you are a new user...
+                <p>Please <Link to="/signup"><b>Signup</b></Link> if you are a new user...</p>
+                <p><Link to="/forgot_password"><b>Forgot Password?</b></Link>, don't worry we will help you!</p>
             </Container>
           </Container>
         );

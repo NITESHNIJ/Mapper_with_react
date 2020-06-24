@@ -5,6 +5,8 @@ import Header from './HeaderComponent';
 import Signup from './SignupComponent';
 import Login from './LoginComponent';
 import ErrorHandle from './ErrorComponent';
+import ForgotPassword from './ForgotPasswordComponent';
+import ResetPassword from './ResetPasswordComponent';
 
 class Main extends Component{
 
@@ -26,6 +28,8 @@ class Main extends Component{
                         <Route path="/login/:signed" component={Login} />
                         <Route path="/signup" component={Signup} />
                         <Route path="/error" component={ErrorHandle} />
+                        <Route path="/forgot_password" component={ForgotPassword} />
+                        <Route path="/reset_password/:key" component={ResetPassword} />
                         <Redirect to="/welcome" />
                     </Switch>
                 </div>
