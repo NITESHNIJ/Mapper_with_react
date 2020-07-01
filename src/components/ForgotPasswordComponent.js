@@ -5,6 +5,8 @@ import { Col, Button, Form, FormGroup, Input, Label, FormText } from 'reactstrap
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
+import { baseUrl } from '../baseUrl';
+
 class ForgotPassword extends Component{
     constructor(props){
         super(props);
@@ -22,7 +24,7 @@ class ForgotPassword extends Component{
         });
         //alert(this.username.value);
 
-        const base_url = 'https://leveltracker.azurewebsites.net';
+        const base_url = baseUrl;
         axios.post(base_url+'/forgotpassword',{
           username: this.username.value
         })

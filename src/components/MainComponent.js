@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import Welcome from './WelcomeComponent';
+
+// for logged in user
 import Header from './HeaderComponent';
+import Footer from './FooterComponent';
+import Logout from './LogoutComponent';
+
+import Dashboard from './DashboardComponent';
+import AddData from './AddDataComponent';
+import Map from './MapComponent';
+import CreateAlert from './CreateAlertComponent';
+import AddLocation from './AddLocationComponent';
+import CreateSensor from './CreateSensorComponent';
+import AddSensor from './AddSensorComponent';
+import AddUser from './AddUserComponent';
+
+// for non-login user
+import Welcome from './WelcomeComponent';
 import Signup from './SignupComponent';
 import Login from './LoginComponent';
 import ErrorHandle from './ErrorComponent';
@@ -13,24 +28,31 @@ class Main extends Component{
 
     constructor(props){
         super(props);
-        this.logout = this.logout.bind(this);
-    }
-
-    logout(){
-        localStorage.removeItem('token');
-        window.location.reload(false)
-        //this.props.history.push('/');
     }
 
     render(){
         
         if(localStorage.getItem('token')){
             return(
-                <div className="App">
-                    <h2>Home page</h2>
-                    <div>Here the user will get all the options!</div>
-                    <Button variant="primary" size="sm" onClick={()=> this.logout()}>Logout</Button>
+                <div className="hold-transition sidebar-mini layout-fixed">
+                    <div class="wrapper">
+                        <Header />
+                        <Switch>
+                            <Route path="/logout" component={ Logout } />
+                            <Route path="/dashboard" component={Dashboard} />
+                            <Route path="/add_data" component={AddData} />
+                            <Route path="/map" component={Map} />
+                            <Route path="/create_alert" component={CreateAlert} />
+                            <Route path="/add_location" component={AddLocation} />
+                            <Route path="/create_sensor" component={CreateSensor} />
+                            <Route path="/add_sensor" component={AddSensor} />
+                            <Route path="/add_user" component={AddUser} />
+                            <Redirect to="/dashboard" />
+                        </Switch>
+                        <Footer />
+                    </div>
                 </div>
+                
             );
         }
         else{

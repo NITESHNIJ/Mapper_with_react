@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import axios from "axios";
 
+import { baseUrl } from '../baseUrl';
 
 class Login extends Component{
 
@@ -31,7 +32,7 @@ class Login extends Component{
           hidden: false
         });
 
-        const base_url = 'https://leveltracker.azurewebsites.net';
+        const base_url = baseUrl;
         axios.post(base_url+'/users/login',{
           username: this.username.value,
           password: this.password.value
