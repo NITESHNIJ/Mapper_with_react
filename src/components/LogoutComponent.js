@@ -11,7 +11,8 @@ class Logout extends Component{
         this.setState({
             hidden: true
         });
-        this.props.history.push('/welcome')
+        this.props.emptystore();
+        this.props.clickit('/welcome')
     }
 
     render(){

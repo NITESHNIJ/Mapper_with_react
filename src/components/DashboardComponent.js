@@ -28,76 +28,76 @@ class Dashboard extends Component{
                 <section class="content">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-3 col-6">
+                            <div class="col-lg-3 col-12">
                                 <div class="card" >
                                 <img class="card-img-top" src={imageUrl1} alt="Card image cap" />
                                 <div class="card-body">
                                     <h5 class="card-title">Add Data</h5>
                                     <p class="card-text">Add new data point.</p>
-                                    <a href="/add_data" class="btn btn-primary">Add Data</a>
+                                    <a onClick={() => {this.props.clickit('/add_data')}} class="btn btn-primary">Add Data</a>
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-6">
+                            <div class="col-lg-3 col-12">
                                 <div class="card" >
                                 <img class="card-img-top" src={imageUrl2} alt="Card image cap" />
                                 <div class="card-body">
                                     <h5 class="card-title">Show Map</h5>
                                     <p class="card-text">View your added data points.</p>
-                                    <a href="/map" class="btn btn-primary">View Map</a>
+                                    <a onClick={() => {this.props.clickit('/map')}} class="btn btn-primary">View Map</a>
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-6">
+                            <div class="col-lg-3 col-12">
                                 <div class="card" >
                                 <img class="card-img-top" src={imageUrl3} alt="Card image cap" />
                                 <div class="card-body">
                                     <h5 class="card-title">Create Alert</h5>
                                     <p class="card-text">Create an alert!</p>
-                                    <a href="/create_alert" class="btn btn-primary">Create Alert</a>
+                                    <a onClick={() => {this.props.clickit('/create_alert')}} class="btn btn-primary">Create Alert</a>
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-6">
+                            <div class="col-lg-3 col-12">
                                 <div class="card" >
                                 <img class="card-img-top" src={imageUrl4} alt="Card image cap" />
                                 <div class="card-body">
                                     <h5 class="card-title">Add Location</h5>
                                     <p class="card-text">Add new data point.</p>
-                                    <a href="/add_location" class="btn btn-primary">Add Location</a>
+                                    <a onClick={() => {this.props.clickit('/add_location')}} class="btn btn-primary">Add Location</a>
                                 </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             
-                            <div class="col-lg-3 col-6">
+                            <div class="col-lg-3 col-12">
                                 <div class="card" >
                                 <img class="card-img-top" src={imageUrl5} alt="Card image cap" />
                                 <div class="card-body">
                                     <h5 class="card-title">Create Sensor</h5>
                                     <p class="card-text">View your added data points.</p>
-                                    <a href="/create_sensor" class="btn btn-primary">Create Sensor</a>
+                                    <a onClick={() => {this.props.clickit('/create_sensor')}} class="btn btn-primary">Create Sensor</a>
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-6">
+                            <div class="col-lg-3 col-12">
                                 <div class="card" >
                                 <img class="card-img-top" src={imageUrl6} alt="Card image cap" />
                                 <div class="card-body">
                                     <h5 class="card-title">Add Sensor</h5>
                                     <p class="card-text">Create an alert!</p>
-                                    <a href="/add_sensor" class="btn btn-primary">Add Sensor</a>
+                                    <a onClick={() => {this.props.clickit('/add_sensor')}} class="btn btn-primary">Add Sensor</a>
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-6">
+                            <div class="col-lg-3 col-12">
                                 <div class="card" >
                                 <img class="card-img-top" src={imageUrl7} alt="Card image cap" />
                                 <div class="card-body">
                                     <h5 class="card-title">Add User</h5>
                                     <p class="card-text">Add new data point.</p>
-                                    <a href="/add_user" class="btn btn-primary">Add User</a>
+                                    <a onClick={() => {this.props.clickit('/add_user')}} class="btn btn-primary">Add User</a>
                                 </div>
                                 </div>
                             </div>

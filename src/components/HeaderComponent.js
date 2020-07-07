@@ -33,10 +33,10 @@ class Header extends Component {
         </nav>
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-          <a href="/dashboard" class="brand-link">
+          <a onClick={() => {this.props.clickit('/dashboard')}} class="brand-link">
             <img src={imageUrl1} alt="" class="brand-image img-circle elevation-3"
                 style={{opacity: ".8"}} />
-            <span class="brand-text font-weight-light">Company Name</span>
+            <span class="brand-text font-weight-light" style={{color: 'white'}}>{this.props.companyname}</span>
           </a>
 
           <div class="sidebar">
@@ -45,14 +45,14 @@ class Header extends Component {
                 <img src={imageUrl2} class="img-circle elevation-2" alt="" />
               </div>
               <div class="info">
-                <a href="#" class="d-block">Admin Name</a>
+                <a onClick={() => {this.props.clickit('/')}} class="d-block">{this.props.name}</a>
               </div>
             </div>
 
             <nav class="mt-2">
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                  <a href="/dashboard" class="nav-link">
+                  <a onClick={() => {this.props.clickit('/dashboard')}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                       Dashboard
@@ -60,7 +60,7 @@ class Header extends Component {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/add_data" class="nav-link">
+                  <a onClick={() => {this.props.clickit('/add_data')}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                       Add Data
@@ -68,7 +68,7 @@ class Header extends Component {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/map" class="nav-link">
+                  <a onClick={() => {this.props.clickit('/map')}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                       View Map
@@ -76,7 +76,7 @@ class Header extends Component {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/create_alert" class="nav-link">
+                  <a onClick={() => {this.props.clickit('/create_alert')}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                       Create Alert
@@ -84,7 +84,7 @@ class Header extends Component {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/add_location" class="nav-link">
+                  <a onClick={() => {this.props.clickit('/add_location')}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                       Add Location
@@ -92,7 +92,7 @@ class Header extends Component {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/create_sensor" class="nav-link">
+                  <a onClick={() => {this.props.clickit('/create_sensor')}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                       Create Sensor
@@ -100,7 +100,7 @@ class Header extends Component {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/add_sensor" class="nav-link">
+                  <a onClick={() => {this.props.clickit('/add_sensor')}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                       Add Sensor
@@ -108,7 +108,7 @@ class Header extends Component {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/add_user" class="nav-link">
+                  <a onClick={() => {this.props.clickit('/add_user')}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                       Add User
@@ -116,7 +116,7 @@ class Header extends Component {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/logout" class="nav-link">
+                  <a onClick={() => {this.props.clickit('/logout')}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                       Logout

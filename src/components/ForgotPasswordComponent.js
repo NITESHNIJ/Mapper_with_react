@@ -66,6 +66,7 @@ class ForgotPassword extends Component{
                 <Button type="submit" value="submit" color="primary">Reset Password</Button>
               </Form>
             </Container>
+            <Link to="/login/notried"><b>Login</b></Link>
           </Container>
         );
     }

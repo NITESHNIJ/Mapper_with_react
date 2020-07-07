@@ -27,7 +27,14 @@ class Signup extends Component{
         const base_url = baseUrl;
         axios.post(base_url+'/users/signup',{
           username: this.username.value,
-          password: this.password.value
+          password: this.password.value,
+          name: this.name.value,
+          companyname: this.companyname.value,
+          usertype: 'admin',
+          typeofdatabase: 'shared',
+          userpic: 'user pic url',
+          companylogo: 'company logo url',
+          parentid: 'no parent for admin user'
         })
         .then( response => {
             this.setState({
@@ -51,7 +58,6 @@ class Signup extends Component{
     render(){
         return(
           <Container id="signup_form">
-            <h1>Signup with us...</h1>
             <Container id="signup_form_input">
               <div  hidden={(this.state.hidden) ? "hidden" : ''}>
                 <Loading />
@@ -59,17 +65,69 @@ class Signup extends Component{
               <div>
                 <h2>{this.state.errmsg}</h2>
               </div>
-              <Form onSubmit={this.handleSignup}>
-                <FormGroup>
-                  <Label htmlFor="username">Email</Label>
-                  <Input required type="email" id="username" name="username" innerRef={(input) => this.username = input} />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="password">Password</Label>
-                  <Input required type="password" id="password" name="password" innerRef={(input) => this.password = input}  />
-                </FormGroup>
-                <Button type="submit" value="submit" color="primary">Signup</Button>
-              </Form>
+              
+
+              <div class="card card-info">
+                <div class="card-header">
+                  <h3 class="card-title">Signup with us...</h3>
+                </div>
+                <form onSubmit={this.handleSignup}>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="companyname">Company Name</label>
+                      <Input required type="text" id="companyname" name="companyname" innerRef={(input) => this.companyname = input}  />
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Admin's Name</label>
+                      <Input required type="text" id="name" name="name" innerRef={(input) => this.name = input}  />
+                    </div>
+                    <div class="form-group">
+                      <label for="username">Email</label>
+                      <Input required type="email" id="username" name="username" innerRef={(input) => this.username = input} />
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <Input required type="password" id="password" name="password" innerRef={(input) => this.password = input}  />
+                    </div>
+                    <div class="form-group">
+                      <label>Data Base Type</label>
+                      <br />
+                      <select>
+                        <option selected="selected">Shared</option>
+                        <option >Individual</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputFile">Admin Picture</label>
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="exampleInputFile" />
+                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                          <span class="input-group-text" id="">Upload</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputFile2">Compoany Logo</label>
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="exampleInputFile2" />
+                          <label class="custom-file-label" for="exampleInputFile2">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                          <span class="input-group-text" id="">Upload</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
               Please <Link to="/login/notried"><b>Login</b></Link> if you are an existing user...
             </Container>
           </Container>

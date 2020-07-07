@@ -4,12 +4,13 @@ import { Col, Button, Form, FormGroup, Input, Label, FormText } from 'reactstrap
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import axios from "axios";
+//import { browserHistory } from 'react-router';
 
 import { baseUrl } from '../baseUrl';
 
 class Login extends Component{
 
-
+    
     constructor(props){
         super(props);
         this.state = {
@@ -20,7 +21,7 @@ class Login extends Component{
 
         this.handleLogin = this.handleLogin.bind(this);
 
-        if(props.match.params.signed == 'true'){
+        if(props.match == 'true'){
           this.state.signup_status = "You have succesfully signed up!"
         }
 
@@ -28,6 +29,7 @@ class Login extends Component{
     }
 
     handleLogin(event) {
+
         this.setState({
           hidden: false
         });
@@ -38,12 +40,34 @@ class Login extends Component{
           password: this.password.value
         })
         .then( response => {
-          //console.log(response);
-          this.setState({
-            hidden: true
-          });
+
           localStorage.setItem('token', response.data.token);
-          this.props.history.push('/dashboard')
+
+          axios.get(base_url+'/users/detail', {
+              headers: {
+                  Authorization: 'Bearer ' + response.data.token
+              }
+          })
+          .then( response => {
+              this.props.fillstore(response.data.token, response.data.message, response.data.name, response.data.companyname, response.data.usertype, response.data.typeofdatabase, response.data.userpic, response.data.companylogo, response.data.parentid);
+              
+              this.setState({
+                hidden: true
+              });
+              //this.props.history.push('./dashboard');
+              this.props.clickit('/dashboard');
+          }, 
+          error => {
+              console.log("error of componentdidMount");
+              localStorage.removeItem('token');
+              this.props.clickit('/login/failed');
+          })
+          .catch(error => {
+              localStorage.removeItem('token');
+              this.props.clickit('/login/failed');
+              console.log(error);
+          });       
+
         }, 
         error => {
           this.setState({
@@ -86,6 +110,7 @@ class Login extends Component{
                 </Form>
                 <p>Please <Link to="/signup"><b>Signup</b></Link> if you are a new user...</p>
                 <p><Link to="/forgot_password"><b>Forgot Password?</b></Link></p>
+                
             </Container>
           </Container>
         );

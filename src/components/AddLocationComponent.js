@@ -20,30 +20,43 @@ class AddLocation extends Component{
           hidden: false
         });
 
+        const headers = {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
         const base_url = baseUrl;
-        axios.post(base_url+'/add_location',{
-          latitude: this.latitude.value,
-          longitude: this.longitude.value,
-          name: this.name.value
+        axios.post(base_url+'/location',{
+            latitude: this.latitude.value,
+            longitude: this.longitude.value,
+            name: this.name.value
+        },{
+            headers: headers
         })
         .then( response => {
-          //console.log(response);
+          console.log(response.data.message);
           this.setState({
             hidden: true,
             errmsg: response.data.message
           });
+          this.latitude.value = '';
+          this.longitude.value = '';
+          this.name.value = '';
         }, 
         error => {
           this.setState({
             hidden: true,
             errmsg: error.response.data.message
           });
+          alert("Session Expired");
+          this.props.clickit('/logout');
         })
         .catch(error => {
-          this.props.history.push('/error')
+            this.setState({
+                hidden: true,
+                errmsg: error.response.data.message
+            });
+            alert("Session Expired");
+            this.props.clickit('/logout');
         });
-
-        //alert("Username: " + this.username.value + " Password: " + this.password.value);
         event.preventDefault();
     }
 
@@ -55,6 +68,7 @@ class AddLocation extends Component{
                         <div class="row mb-2">
                             <div class="col-sm-6">
                                 <h1 class="m-0 text-dark">Add Location</h1>
+                                <h3>{this.state.errmsg}</h3>
                             </div>
                         </div>
                     </div>
@@ -67,7 +81,7 @@ class AddLocation extends Component{
                 <section class="content">
                     <div class="container-fluid">
                         
-                    <div class="card card-primary">
+                    <div class="card card-secondary">
                         <div class="card-header">
                             <h3 class="card-title">Add Location...</h3>
                         </div>
