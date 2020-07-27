@@ -8,7 +8,7 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
 
 import { NavLink } from 'react-router-dom';
 
-class Header extends Component {
+class LocalHeader extends Component {
 
   constructor(props){
     super(props);
@@ -36,7 +36,7 @@ class Header extends Component {
           <a onClick={() => {this.props.clickit('/dashboard')}} class="brand-link">
             <img src={imageUrl1} alt="" class="brand-image img-circle elevation-3"
                 style={{opacity: ".8"}} />
-            <span class="brand-text font-weight-light" style={{color: 'white',cursor:'pointer'}}>{this.props.companyname}</span>
+            <span class="brand-text font-weight-light" style={{color: 'white'}}>{this.props.companyname}</span>
           </a>
 
           <div class="sidebar">
@@ -60,14 +60,6 @@ class Header extends Component {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a onClick={() => {this.props.clickit('/add_data')}} style={{color: 'white',cursor:'pointer'}} class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                      Add Data
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a onClick={() => {this.props.clickit('/map')}} style={{color: 'white',cursor:'pointer'}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
@@ -80,38 +72,6 @@ class Header extends Component {
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                       Create Alert
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a onClick={() => {this.props.clickit('/add_location')}} style={{color: 'white',cursor:'pointer'}} class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                      Add Location
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a onClick={() => {this.props.clickit('/create_sensor')}} style={{color: 'white',cursor:'pointer'}} class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                      Create Sensor
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a onClick={() => {this.props.clickit('/add_sensor')}} style={{color: 'white',cursor:'pointer'}} class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                      Add Sensor
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a onClick={() => {this.props.clickit('/add_user')}} style={{color: 'white',cursor:'pointer'}} class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                      Add User
                     </p>
                   </a>
                 </li>
@@ -133,4 +93,4 @@ class Header extends Component {
 }
 
 
-export default Header;
+export default LocalHeader;

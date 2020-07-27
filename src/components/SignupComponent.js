@@ -40,7 +40,7 @@ class Signup extends Component{
             this.setState({
               hidden: true
             });
-            this.props.history.push('/login/true')
+            this.props.clickit('/login/true')
         }, (err) => {
           this.setState({
             hidden: true,
@@ -48,7 +48,7 @@ class Signup extends Component{
           });
         })
         .catch(error => {
-          this.props.history.push('/error')
+          this.props.clickit('/error')
         });
           
         //alert("Username: " + this.username.value + " Password: " + this.password.value);
@@ -128,7 +128,7 @@ class Signup extends Component{
                   </div>
                 </form>
               </div>
-              Please <Link to="/login/notried"><b>Login</b></Link> if you are an existing user...
+              <p><span onClick={() => {this.props.clickit('/login/notried')}} style={{color: "blue",cursor: 'pointer'}} class="d-block">Please <b>Login</b> if you are an existing user...</span></p>
             </Container>
           </Container>
         );

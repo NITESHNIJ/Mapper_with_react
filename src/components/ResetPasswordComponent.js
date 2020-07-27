@@ -13,7 +13,7 @@ class ResetPassword extends Component{
         this.state = {
             hidden: true,
             errmsg: "",
-            key: props.match.params.key
+            key: props.match
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -35,7 +35,7 @@ class ResetPassword extends Component{
             hidden: true,
             errmsg: response.data.message
           });
-          this.props.history.push('/login')
+          this.props.clickit('/login')
         }, 
         error => {
           this.setState({
@@ -44,7 +44,7 @@ class ResetPassword extends Component{
           });
         })
         .catch(error => {
-            this.props.history.push('/error')
+            this.props.clickit('/error')
         });
 
         event.preventDefault();
@@ -52,28 +52,44 @@ class ResetPassword extends Component{
 
     render(){
         return(
-          <Container id="forgot_password">
-            <h1>Reset Password</h1>
-            <Container id="signup_form_input">
-              <div  hidden={(this.state.hidden) ? "hidden" : ''}>
-                <Loading />
+          <div class="hold-transition login-page">
+            <div class="login-box">
+              <div class="card">
+                <div class="card-body login-card-body">
+                  <p class="login-box-msg">You are only one step a way from your new password, recover your password now.</p>
+                  <div  hidden={(this.state.hidden) ? "hidden" : ''}>
+                    <Loading />
+                  </div>
+                  <div>
+                    <h2>{this.state.errmsg}</h2>
+                  </div>
+                  <form onSubmit={this.handleSubmit}>
+                    <div class="input-group mb-3">
+                      <Input required type="email" id="username" name="username" innerRef={(input) => this.username = input} />
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span class="fas fa-lock"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <Input required type="password" id="password" name="password" innerRef={(input) => this.password = input} />
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span class="fas fa-lock"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block">Change password</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
-              <div>
-                <h2>{this.state.errmsg}</h2>
-              </div>
-              <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label htmlFor="username">Email</Label>
-                  <Input required type="email" id="username" name="username" innerRef={(input) => this.username = input} />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="password">New Password</Label>
-                  <Input required type="password" id="password" name="password" innerRef={(input) => this.password = input} />
-                </FormGroup>
-                <Button type="submit" value="submit" color="primary">Save Password</Button>
-              </Form>
-            </Container>
-          </Container>
+            </div>
+          </div>
         );
     }
 }

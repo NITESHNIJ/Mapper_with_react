@@ -17,6 +17,10 @@ import CreateSensor from './CreateSensorComponent';
 import AddSensor from './AddSensorComponent';
 import AddUser from './AddUserComponent';
 
+// for local user :
+import LocalHeader from './LocalHeaderComponent';
+import LocalDashboard from './LocalDashboardComponent';
+
 // for non-login user
 import Welcome from './WelcomeComponent';
 import Signup from './SignupComponent';
@@ -30,6 +34,7 @@ import { fillstore, emptystore } from '../redux/ActionCreators';
 import axios from "axios";
 import { baseUrl } from '../baseUrl';
 import { Loading } from './LoadingComponent';
+import Demo from './DemoComponent';
 
 const mapStateToProps = (state,{history}) => {
     return{
@@ -123,50 +128,53 @@ class Main extends Component{
                             <Footer />
                         </div>
                     </div>
-                    
+                    //<Demo />
                 );
             }
             else{
-                return(
-                    <div className="hold-transition sidebar-mini layout-fixed">
-                        <div class="wrapper">
-                            <Header clickit={(loc) => this.pusher(loc)} companyname={this.props.store.companyname} name={this.props.store.name} companylogo={this.props.store.companylogo} userpic={this.props.store.userpic}/>
-                            <Switch>
-                                <Route path="/logout" component={() => <Logout clickit={(loc) => this.pusher(loc)} emptystore={this.props.emptystore}/>} />
-                                <Route path="/dashboard" component={() => <Dashboard clickit={(loc) => this.pusher(loc)} />} />
-                                <Route path="/add_data" component={() => <AddData clickit={(loc) => this.pusher(loc)} />} />
-                                <Route path="/map" component={() => <Map clickit={(loc) => this.pusher(loc)} />} />
-                                <Route path="/create_alert" component={() => <CreateAlert clickit={(loc) => this.pusher(loc)} />} />
-                                <Route path="/add_location" component={() => <AddLocation clickit={(loc) => this.pusher(loc)} />} />
-                                <Route path="/create_sensor" component={() => <CreateSensor clickit={(loc) => this.pusher(loc)} />} />
-                                <Route path="/add_sensor" component={() => <AddSensor clickit={(loc) => this.pusher(loc)} />} />
-                                <Route path="/add_user" component={() => <AddUser clickit={(loc) => this.pusher(loc)} />} />
-                                <Redirect to="/dashboard" />
-                            </Switch>
-                            <Footer />
+                if(this.props.store.usertype == 'localuser'){
+                    return(
+                        <div className="hold-transition sidebar-mini layout-fixed">
+                            <div class="wrapper">
+                                <LocalHeader clickit={(loc) => this.pusher(loc)} companyname={this.props.store.companyname} name={this.props.store.name} companylogo={this.props.store.companylogo} userpic={this.props.store.userpic}/>
+                                <Switch>
+                                    <Route path="/logout" component={() => <Logout clickit={(loc) => this.pusher(loc)} emptystore={this.props.emptystore}/>} />
+                                    <Route path="/localdashboard" component={() => <LocalDashboard clickit={(loc) => this.pusher(loc)} />} />
+                                    <Route path="/map" component={() => <Map clickit={(loc) => this.pusher(loc)} />} />
+                                    <Route path="/create_alert" component={() => <CreateAlert clickit={(loc) => this.pusher(loc)} />} />
+                                    <Redirect to="/localdashboard" />
+                                </Switch>
+                                <Footer />
+                            </div>
                         </div>
-                    </div>
-                    
-                );
+                        
+                    );
+                }
             }
         }
         else{
 
             const LoginComp = (props)=>{
                 return(
-                    <Login fillstore={this.props.fillstore} match={props.match.params.signed} clickit={(loc) => this.pusher(loc)}/>
+                    <Login match={props.match.params.signed} fillstore={this.props.fillstore} clickit={(loc) => this.pusher(loc)} />
+                );
+            }
+
+            const ResetComp = (props)=>{
+                return(
+                    <ResetPassword match={props.match.params.key} clickit={(loc) => this.pusher(loc)} />
                 );
             }
 
             return(
                 <div className="App">
                     <Switch>
-                        <Route path="/welcome" component={Welcome} />
+                        <Route path="/welcome" component={() => <Welcome clickit={(loc) => this.pusher(loc)} />} />
                         <Route path="/login/:signed" component={LoginComp} />
-                        <Route path="/signup" component={Signup} />
-                        <Route path="/error" component={ErrorHandle} />
-                        <Route path="/forgot_password" component={ForgotPassword} />
-                        <Route path="/reset_password/:key" component={ResetPassword} />
+                        <Route path="/signup" component={() => <Signup clickit={(loc) => this.pusher(loc)} />} />
+                        <Route path="/error" component={() => <ErrorHandle clickit={(loc) => this.pusher(loc)} />} />
+                        <Route path="/forgot_password" component={() => <ForgotPassword clickit={(loc) => this.pusher(loc)} />} />
+                        <Route path="/reset_password/:key" component={ResetComp} />
                         <Redirect to="/welcome" />
                     </Switch>
                 </div>

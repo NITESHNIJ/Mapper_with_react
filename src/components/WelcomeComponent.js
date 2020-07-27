@@ -10,7 +10,7 @@ class Welcome extends Component{
                     <div className="content">
                         <h1><b>Welcome</b></h1>
                         <h3>Please Register if you are a new user else Signin</h3>
-                        <Link to="/signup"><b>Login/Signup</b></Link>
+                        <b onClick={() => {this.props.clickit('/signup')}} style={{color: "blue",cursor: 'pointer'}} class="d-block">Signup</b>/<b onClick={() => {this.props.clickit('/login/notried')}} style={{color: "blue",cursor: 'pointer'}} class="d-block">Login</b>
                     </div>
                 </div>
             </div>
@@ -18,5 +18,4 @@ class Welcome extends Component{
         );
     }
 };
-//style="width: 100%; height: 100vh; position: relative;"
 export default Welcome;

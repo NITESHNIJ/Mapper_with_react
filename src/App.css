@@ -1,6 +1,21 @@
 .App {
   text-align: center;
 }
+.card{
+  border: 0px solid black;
+}
+.inner_body_create_sensor{
+  /* height: 80vh; */
+  background: url('./images/create_sensor.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: aliceblue;
+  /* margin-bottom: 10px; */
+  margin: auto;
+  /* margin-top: 20px; */
+}
+
+
 .container{
   margin-top: 20px;
   margin-bottom: 20px;
@@ -36,13 +51,16 @@
   margin-top: 50px;
 }
 .welcome_jumbo{
-  background: url('./images/abcd.jpeg');
+  
+  /* background: url('./images/welcome.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  color: aliceblue;
-  margin-bottom: 10px;
-  margin: auto;
-  margin-top: 20px;
+  color: aliceblue; */
+  background-image: url('./images/welcome.jpg');
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .App-logo {

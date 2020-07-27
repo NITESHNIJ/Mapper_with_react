@@ -34,7 +34,7 @@ class Dashboard extends Component{
                                 <div class="card-body">
                                     <h5 class="card-title">Add Data</h5>
                                     <p class="card-text">Add new data point.</p>
-                                    <a onClick={() => {this.props.clickit('/add_data')}} class="btn btn-primary">Add Data</a>
+                                    <a onClick={() => {this.props.clickit('/add_data')}} style={{color: 'white',cursor:'pointer'}} class="btn btn-primary">Add Data</a>
                                 </div>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@ class Dashboard extends Component{
                                 <div class="card-body">
                                     <h5 class="card-title">Show Map</h5>
                                     <p class="card-text">View your added data points.</p>
-                                    <a onClick={() => {this.props.clickit('/map')}} class="btn btn-primary">View Map</a>
+                                    <a onClick={() => {this.props.clickit('/map')}} style={{color: 'white',cursor:'pointer'}} class="btn btn-primary">View Map</a>
                                 </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@ class Dashboard extends Component{
                                 <div class="card-body">
                                     <h5 class="card-title">Create Alert</h5>
                                     <p class="card-text">Create an alert!</p>
-                                    <a onClick={() => {this.props.clickit('/create_alert')}} class="btn btn-primary">Create Alert</a>
+                                    <a onClick={() => {this.props.clickit('/create_alert')}} style={{color: 'white',cursor:'pointer'}} class="btn btn-primary">Create Alert</a>
                                 </div>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@ class Dashboard extends Component{
                                 <div class="card-body">
                                     <h5 class="card-title">Add Location</h5>
                                     <p class="card-text">Add new data point.</p>
-                                    <a onClick={() => {this.props.clickit('/add_location')}} class="btn btn-primary">Add Location</a>
+                                    <a onClick={() => {this.props.clickit('/add_location')}} style={{color: 'white',cursor:'pointer'}} class="btn btn-primary">Add Location</a>
                                 </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@ class Dashboard extends Component{
                                 <div class="card-body">
                                     <h5 class="card-title">Create Sensor</h5>
                                     <p class="card-text">View your added data points.</p>
-                                    <a onClick={() => {this.props.clickit('/create_sensor')}} class="btn btn-primary">Create Sensor</a>
+                                    <a onClick={() => {this.props.clickit('/create_sensor')}} style={{color: 'white',cursor:'pointer'}} class="btn btn-primary">Create Sensor</a>
                                 </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@ class Dashboard extends Component{
                                 <div class="card-body">
                                     <h5 class="card-title">Add Sensor</h5>
                                     <p class="card-text">Create an alert!</p>
-                                    <a onClick={() => {this.props.clickit('/add_sensor')}} class="btn btn-primary">Add Sensor</a>
+                                    <a onClick={() => {this.props.clickit('/add_sensor')}} style={{color: 'white',cursor:'pointer'}} class="btn btn-primary">Add Sensor</a>
                                 </div>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@ class Dashboard extends Component{
                                 <div class="card-body">
                                     <h5 class="card-title">Add User</h5>
                                     <p class="card-text">Add new data point.</p>
-                                    <a onClick={() => {this.props.clickit('/add_user')}} class="btn btn-primary">Add User</a>
+                                    <a onClick={() => {this.props.clickit('/add_user')}} style={{color: 'white',cursor:'pointer'}} class="btn btn-primary">Add User</a>
                                 </div>
                                 </div>
                             </div>

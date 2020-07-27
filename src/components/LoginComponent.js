@@ -54,12 +54,12 @@ class Login extends Component{
               this.setState({
                 hidden: true
               });
-              //this.props.history.push('./dashboard');
               this.props.clickit('/dashboard');
           }, 
           error => {
               console.log("error of componentdidMount");
               localStorage.removeItem('token');
+
               this.props.clickit('/login/failed');
           })
           .catch(error => {
@@ -76,7 +76,7 @@ class Login extends Component{
           });
         })
         .catch(error => {
-          this.props.history.push('/error')
+          this.props.clickit('/error')
         });
 
         //alert("Username: " + this.username.value + " Password: " + this.password.value);
@@ -85,34 +85,54 @@ class Login extends Component{
 
     render(){
         return(
-          <Container id="signup_form">
-            <h1>Login...</h1>
-            <Container id="signup_form_input">
-              <div  hidden={(this.state.hidden) ? "hidden" : ''}>
-                <Loading />
+          <div class="hold-transition login-page">
+            <div class="login-box">
+              <div class="card">
+                <div class="card-body login-card-body">
+                  <p class="login-box-msg">Sign in to start your session</p>
+                  <div  hidden={(this.state.hidden) ? "hidden" : ''}>
+                    <Loading />
+                  </div>
+                  <div>
+                    <h3>{this.state.signup_status}</h3>
+                  </div>
+                  <div>
+                    <h3>{this.state.errmsg}</h3>
+                  </div>
+                  <form onSubmit={this.handleLogin}>
+                    <div class="input-group mb-3">
+                      <Input required type="email" id="username" name="username" innerRef={(input) => this.username = input} />
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span class="fas fa-envelope"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <Input required type="password" id="password" name="password" innerRef={(input) => this.password = input}  />
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span class="fas fa-lock"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                      </div>
+                    </div>
+                  </form>
+
+                  <p class="mb-1">
+                    <p><span onClick={() => {this.props.clickit('/signup')}} style={{color: "blue",cursor: 'pointer'}} class="d-block">Please <b>Signup</b> if you are a new user...</span></p>
+                  </p>
+                  <p class="mb-0">
+                    <p><span onClick={() => {this.props.clickit('/forgot_password')}} style={{color: "blue",cursor: 'pointer'}} class="d-block">Forgot Password?</span></p>
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3>{this.state.signup_status}</h3>
-              </div>
-              <div>
-                <h3>{this.state.errmsg}</h3>
-              </div>
-              <Form onSubmit={this.handleLogin}>
-                  <FormGroup>
-                    <Label htmlFor="username">Email</Label>
-                    <Input required type="email" id="username" name="username" innerRef={(input) => this.username = input} />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label htmlFor="password">Password</Label>
-                    <Input required type="password" id="password" name="password" innerRef={(input) => this.password = input}  />
-                  </FormGroup>
-                  <Button type="submit" value="submit" color="primary">Login</Button>
-                </Form>
-                <p>Please <Link to="/signup"><b>Signup</b></Link> if you are a new user...</p>
-                <p><Link to="/forgot_password"><b>Forgot Password?</b></Link></p>
-                
-            </Container>
-          </Container>
+            </div>
+          </div>
         );
     }
 }
