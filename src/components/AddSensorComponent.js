@@ -39,7 +39,7 @@ function RenderLocations(props){
         else{
             const locations_list = props.locations.map((location) => {
                 return (
-                    <div class="card bg-secondary">
+                    <div class="card bg-info" style={{border: (location._id == props.selected_location)?"solid black 15px":"solid white 15px"}} onClick={() => props.ChangeSelectedLocation(location._id)}>
                         <div class="card-body">
                             <h5 class="card-title">{location.name}</h5>
                             <p class="card-text">Latitude : {location.latitude}</p>
@@ -91,7 +91,7 @@ function RenderSensors(props){
         else{
             const sensors_list = props.sensors.map((sensor) => {
                 return (
-                    <div class="card bg-secondary">
+                    <div class="card bg-info" style={{border:"solid white 15px"}} style={{border: (sensor._id == props.selected_sensor)?"solid black 15px":"solid white 15px"}} onClick={() => props.ChangeSelectedSensor(sensor._id)}>
                         <div class="card-body">
                             <h5 class="card-title">{sensor.name}</h5>
                             <p class="card-text">Sensor Type : {sensor.sensor_type}</p>
@@ -121,20 +121,127 @@ class AddSensor extends Component{
         super(props);
         this.state = {
             locations: null,
-            sensors: null
+            sensors: null,
+            selected_location : null,
+            selected_sensor : null,
+            hidden: true,
+            errmsg: ''
         };
+        this.ChangeSelectedLocation = this.ChangeSelectedLocation.bind(this);
+        this.ChangeSelectedSensor = this.ChangeSelectedSensor.bind(this);
+        this.handleData = this.handleData.bind(this);
+    }
+
+
+    handleData(event) {
+        this.setState({
+          hidden: false
+        });
+
+        if(this.state.selected_location == null){
+            alert('Please select a location.');
+            event.preventDefault();
+            this.setState({
+                hidden: true
+            });
+            return;
+        }
+
+        if(this.state.selected_sensor == null){
+            alert('Please select a sensor');
+            event.preventDefault();
+            this.setState({
+                hidden: true
+            });
+            return;
+        }
+
+        const headers = {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+        const base_url = baseUrl;
+        axios.post(base_url+'/sensorinst',{
+            locationid: this.state.selected_location,
+            sensorid: this.state.selected_sensor,
+            count: this.count.value
+        },{
+            headers: headers
+        })
+        .then( globalresponse => {
+            axios.post(base_url+'/code',{
+                locationid: this.state.selected_location
+            })
+            .then( response => {
+                console.log("repsonse from post path : ");
+                console.log(response);
+              console.log(globalresponse.data.message);
+              this.setState({
+                hidden: true,
+                errmsg: globalresponse.data.message,
+                selected_location: null,
+                selected_sensor: null
+              });
+              this.count.value = 0;
+            }, 
+            error => {
+              this.setState({
+                hidden: true,
+                errmsg: error.response.data.message
+              });
+              alert("Session Expired");
+              this.props.clickit('/logout');
+            })
+            .catch(error => {
+                this.setState({
+                    hidden: true,
+                    errmsg: error.response.data.message
+                });
+                alert("Session Expired");
+                this.props.clickit('/logout');
+            });
+        }, 
+        error => {
+          this.setState({
+            hidden: true,
+            errmsg: error.response.data.message
+          });
+          alert("Session Expired");
+          this.props.clickit('/logout');
+        })
+        .catch(error => {
+            this.setState({
+                hidden: true,
+                errmsg: error.response.data.message
+            });
+            alert("Session Expired");
+            this.props.clickit('/logout');
+        });
+        event.preventDefault();
+    }
+
+
+    ChangeSelectedLocation(id){
+        this.setState({
+            selected_location: id
+        });
+    }
+
+    ChangeSelectedSensor(id){
+        this.setState({
+            selected_sensor: id
+        });
     }
 
     componentDidMount(){
 
         let base_url = baseUrl;
-
         axios.get(base_url+'/location', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
         })
         .then( response => {
+            console.log("locations : ");
             console.log(response);
             this.setState({
                 locations: response.data.data
@@ -156,6 +263,7 @@ class AddSensor extends Component{
             }
         })
         .then( response => {
+            console.log("sensors : ");
             console.log(response);
             this.setState({
                 sensors: response.data.data
@@ -192,25 +300,28 @@ class AddSensor extends Component{
                 <section class="content">
                     <div class="container-fluid">
                         <div class="card">
-                        {/* onSubmit={this.handleUser} */}
-                            <form >
+                            
+                                <div  hidden={(this.state.hidden) ? "hidden" : ''}>
+                                    <Loading />
+                                </div>
+                                <p><b>{this.state.errmsg}</b></p>
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label><b>Location</b></label>
-                                        <RenderLocations locations={this.state.locations}/>
+                                        <RenderLocations locations={this.state.locations} ChangeSelectedLocation={this.ChangeSelectedLocation} selected_location={this.state.selected_location}/>
                                     </div>
                                     <div class="form-group">
                                         <label><b>Sensors</b></label>
-                                        <RenderSensors sensors={this.state.sensors}/>   
+                                        <RenderSensors sensors={this.state.sensors} ChangeSelectedSensor={this.ChangeSelectedSensor} selected_sensor={this.state.selected_sensor}/>   
                                     </div>
                                     <div class="form-group">
                                         <label for="count"><b>Number of sensors to be added</b></label>
                                         <Input required type="number" id="count" name="count" innerRef={(input) => this.count = input}  />
                                     </div>
                                 </div>
-
+                            <form role="form" onSubmit={this.handleData}>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Add Sensors</button>
+                                <button type="submit" class="btn btn-primary">Add Sensor(s)</button>
                                 </div>
                             </form>
                         </div>

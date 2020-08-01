@@ -27,7 +27,9 @@ class Header extends Component {
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+              <a class="nav-link" data-widget="pushmenu" href="#">
+                <i class="fas fa-bars"></i>
+              </a>
             </li>
           </ul>
         </nav>
@@ -60,10 +62,10 @@ class Header extends Component {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a onClick={() => {this.props.clickit('/add_data')}} style={{color: 'white',cursor:'pointer'}} class="nav-link">
+                  <a onClick={() => {this.props.clickit('/view_code')}} style={{color: 'white',cursor:'pointer'}} class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
-                      Add Data
+                      View Code
                     </p>
                   </a>
                 </li>

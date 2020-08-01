@@ -137,15 +137,15 @@ class CreateSensor extends Component{
                                 <p><b>{this.state.errmsg}</b></p>
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <Label htmlFor="name"><span style={{color: "#787878"}}>Name</span></Label>
+                                        <Label htmlFor="name"><span style={{color: "black"}}>Name</span></Label>
                                         <Input required type="text" id="name" name="name" innerRef={(input) => this.name = input}/>
                                     </div>
                                     <div class="form-group">
-                                        <Label htmlFor="unit"><span style={{color: "#787878"}}>Unit of recieved data(if applicable)</span></Label>
+                                        <Label htmlFor="unit"><span style={{color: "black"}}>Unit of recieved data(if applicable)</span></Label>
                                         <Input type="text" id="unit" name="unit" innerRef={(input) => this.unit = input}/>
                                     </div>
                                     <div class="form-group">
-                                        <Label><span style={{color: "#787878"}}>Choose the type of Sensor</span></Label>
+                                        <Label><span style={{color: "black"}}>Choose the type of Sensor</span></Label>
                                         <br />
                                         <select onChange={this.sensor_type_change}>
                                             <option value="first value">First Value</option>
@@ -153,7 +153,7 @@ class CreateSensor extends Component{
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <Label><span style={{color: "#787878"}}>Choose the type of recieved data</span></Label>
+                                        <Label><span style={{color: "black"}}>Choose the type of recieved data</span></Label>
                                         <br />
                                         <select onChange={this.data_type_change}>
                                             <option value="continous">Continous</option>
@@ -163,15 +163,15 @@ class CreateSensor extends Component{
                                         </select>
                                     </div>
                                     <div class="form-group" hidden={(this.state.min_range_hidden) ? "hidden" : ''}>
-                                        <Label htmlFor="min_range"><span style={{color: "#787878"}}>Min Range</span></Label>
+                                        <Label htmlFor="min_range"><span style={{color: "black"}}>Min Range</span></Label>
                                         <Input type="number" id="min_range" name="min_range" innerRef={(input) => this.min_range = input}  />
                                     </div>
                                     <div class="form-group" hidden={(this.state.max_range_hidden) ? "hidden" : ''}>
-                                        <Label htmlFor="max_range"><span style={{color: "#787878"}}>Max Range</span></Label>
+                                        <Label htmlFor="max_range"><span style={{color: "black"}}>Max Range</span></Label>
                                         <Input type="number" id="max_range" name="max_range" innerRef={(input) => this.max_range = input}  />
                                     </div>
                                     <div class="form-group" hidden={(this.state.descrete_values_hidden) ? "hidden" : ''}>
-                                        <Label htmlFor="descrete_values"><span style={{color: "#787878"}}>Enter the possible value(s)(separate by a space)</span></Label>
+                                        <Label htmlFor="descrete_values"><span style={{color: "black"}}>Enter the possible value(s)(separate by a space)</span></Label>
                                         <Input type="text" id="descrete_values" name="descrete_values" innerRef={(input) => this.descrete_values = input}  />
                                     </div>
                                 </div>

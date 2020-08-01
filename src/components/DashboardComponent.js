@@ -32,9 +32,9 @@ class Dashboard extends Component{
                                 <div class="card" >
                                 <img class="card-img-top" src={imageUrl1} alt="Card image cap" />
                                 <div class="card-body">
-                                    <h5 class="card-title">Add Data</h5>
-                                    <p class="card-text">Add new data point.</p>
-                                    <a onClick={() => {this.props.clickit('/add_data')}} style={{color: 'white',cursor:'pointer'}} class="btn btn-primary">Add Data</a>
+                                    <h5 class="card-title">View Code</h5>
+                                    <p class="card-text">View Code for every location.</p>
+                                    <a onClick={() => {this.props.clickit('/view_code')}} style={{color: 'white',cursor:'pointer'}} class="btn btn-primary">View Code</a>
                                 </div>
                                 </div>
                             </div>

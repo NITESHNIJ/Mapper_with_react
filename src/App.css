@@ -1,6 +1,32 @@
 .App {
   text-align: center;
 }
+.leaflet-container {
+  height: 85vh;
+  width: 100%;
+}
+.code{
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #D3D3D3;
+  box-shadow: 5px 5px #888888;
+}
+.tabler{
+  margin-left: 100px;
+}
+hr{
+  background-color: white;
+}
+td{
+  border: 2px solid white ;
+}
+.r-slider{
+  padding: 10px;
+}
+.main-footer{
+  z-index: 10;
+}
 .card{
   border: 0px solid black;
 }
@@ -50,7 +76,7 @@
 #signup_form_input{
   margin-top: 50px;
 }
-.welcome_jumbo{
+#welcome{
   
   /* background: url('./images/welcome.jpg');
   background-repeat: no-repeat;

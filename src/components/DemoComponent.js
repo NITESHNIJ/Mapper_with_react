@@ -1,55 +1,42 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
+import {Polar} from 'react-chartjs-2';
 
-//import "./styles.css";
+const data = {
+  datasets: [{
+    data: [
+      11,
+      16,
+      7,
+      3,
+      14
+    ],
+    backgroundColor: [
+      '#FF6384',
+      '#4BC0C0',
+      '#FFCE56',
+      '#E7E9ED',
+      '#36A2EB'
+    ],
+    label: 'My dataset' // for legend
+  }],
+  labels: [
+    'Red',
+    'Green',
+    'Yellow',
+    'Grey',
+    'Blue'
+  ]
+};
+class Demo extends Component{
 
-function App() {
-  const [fields, setFields] = useState([{ value: null }]);
-
-  function handleChange(i, event) {
-    const values = [...fields];
-    values[i].value = event.target.value;
-    setFields(values);
+  render() {
+    return (
+      <div>
+        <h2>Pie Example</h2>
+        <Polar data={data} />
+      </div>
+    );
   }
-
-  function handleAdd() {
-    const values = [...fields];
-    values.push({ value: null });
-    setFields(values);
-  }
-
-  function handleRemove(i) {
-    const values = [...fields];
-    values.splice(i, 1);
-    setFields(values);
-  }
-
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-
-      <button type="button" onClick={() => handleAdd()}>
-        +
-      </button>
-
-      {fields.map((field, idx) => {
-        return (
-          <div key={`${field}-${idx}`}>
-            <input
-              type="text"
-              placeholder="Enter text"
-              value={field.value || ""}
-              onChange={e => handleChange(idx, e)}
-            />
-            <button type="button" onClick={() => handleRemove(idx)}>
-              X
-            </button>
-          </div>
-        );
-      })}
-    </div>
-  );
 }
 
-
-export default App;
+export default Demo;

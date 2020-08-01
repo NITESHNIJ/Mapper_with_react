@@ -9,7 +9,7 @@ import Footer from './FooterComponent';
 import Logout from './LogoutComponent';
 
 import Dashboard from './DashboardComponent';
-import AddData from './AddDataComponent';
+import ViewCode from './ViewCodeComponent';
 import Map from './MapComponent';
 import CreateAlert from './CreateAlertComponent';
 import AddLocation from './AddLocationComponent';
@@ -116,7 +116,7 @@ class Main extends Component{
                             <Switch>
                                 <Route path="/logout" component={() => <Logout clickit={(loc) => this.pusher(loc)} emptystore={this.props.emptystore}/>} />
                                 <Route path="/dashboard" component={() => <Dashboard clickit={(loc) => this.pusher(loc)} />} />
-                                <Route path="/add_data" component={() => <AddData clickit={(loc) => this.pusher(loc)} />} />
+                                <Route path="/view_code" component={() => <ViewCode clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/map" component={() => <Map clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/create_alert" component={() => <CreateAlert clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/add_location" component={() => <AddLocation clickit={(loc) => this.pusher(loc)} />} />

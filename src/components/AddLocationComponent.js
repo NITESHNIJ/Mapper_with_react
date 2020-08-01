@@ -12,9 +12,13 @@ class AddLocation extends Component{
             hidden: true,
             errmsg: ""
         };
+        this.type = 'arduino';
         this.handleData = this.handleData.bind(this);
+        this.data_type_change = this.data_type_change.bind(this);
     }
-
+    data_type_change = (event) => {
+        this.type = event.target.value;
+    }
     handleData(event) {
         this.setState({
           hidden: false
@@ -27,7 +31,8 @@ class AddLocation extends Component{
         axios.post(base_url+'/location',{
             latitude: this.latitude.value,
             longitude: this.longitude.value,
-            name: this.name.value
+            name: this.name.value,
+            type: this.type
         },{
             headers: headers
         })
@@ -98,6 +103,14 @@ class AddLocation extends Component{
                                 <div class="form-group">
                                     <Label htmlFor="name">Name</Label>
                                     <Input required type="text" id="name" name="name" innerRef={(input) => this.name = input}  />
+                                </div>
+                                <div class="form-group">
+                                    <Label><span>Choose the type of Micro-Controller</span></Label>
+                                    <br />
+                                    <select onChange={this.data_type_change}>
+                                        <option value="arduino">ARDUINO - EMBEDDED C</option>
+                                        <option value="raspberry">RASPBERRYPI - PYTHON</option>
+                                    </select>
                                 </div>
                             </div>
 
