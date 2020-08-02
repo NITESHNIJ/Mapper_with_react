@@ -64,7 +64,7 @@ function RenderGraph(props) {
         if(data.sensor){
           if(data.sensor[0].data_type=='continous' || data.sensor[0].data_type=='descrete_boolean' || data.sensor[0].data_type=='descrete_numbers'){
             const val = {
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              labels: ['0', '1', '2', '3', '4', '5', '6'],
               datasets: [
                 {
                   label: 'values',
@@ -131,7 +131,7 @@ function RenderGraph(props) {
             });
 
             const val = {
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              labels: ['0', '1', '2', '3', '4', '5', '6'],
               datasets: [
                 {
                   label: 'values',
@@ -201,8 +201,8 @@ class Maps extends Component{
   constructor() {
     super();
       this.state = {
-        lat: 51.505,
-        lng: -0.09,
+        lat: 28.7041,
+        lng: 77.1025,
         zoom: 13,
         locations: null,
         datas: null,

@@ -168,20 +168,42 @@ class AddSensor extends Component{
             headers: headers
         })
         .then( globalresponse => {
+
             axios.post(base_url+'/code',{
                 locationid: this.state.selected_location
             })
             .then( response => {
-                console.log("repsonse from post path : ");
-                console.log(response);
-              console.log(globalresponse.data.message);
-              this.setState({
-                hidden: true,
-                errmsg: globalresponse.data.message,
-                selected_location: null,
-                selected_sensor: null
-              });
-              this.count.value = 0;
+                axios.post(base_url+'/code',{
+                        locationid: this.state.selected_location
+                    })
+                    .then( response => {
+                        console.log("repsonse from post path : ");
+                        console.log(response);
+                        console.log(globalresponse.data.message);
+                        this.setState({
+                            hidden: true,
+                            errmsg: globalresponse.data.message,
+                            selected_location: null,
+                            selected_sensor: null
+                        });
+                        this.count.value = 0;
+                    }, 
+                    error => {
+                        this.setState({
+                        hidden: true,
+                        errmsg: error.response.data.message
+                        });
+                        alert("Session Expired");
+                        this.props.clickit('/logout');
+                    })
+                    .catch(error => {
+                        this.setState({
+                            hidden: true,
+                            errmsg: error.response.data.message
+                        });
+                        alert("Session Expired");
+                        this.props.clickit('/logout');
+                    });
             }, 
             error => {
               this.setState({
@@ -199,6 +221,7 @@ class AddSensor extends Component{
                 alert("Session Expired");
                 this.props.clickit('/logout');
             });
+
         }, 
         error => {
           this.setState({

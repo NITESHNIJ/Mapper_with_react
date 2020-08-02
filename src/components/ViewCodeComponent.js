@@ -107,29 +107,29 @@ class ViewCode extends Component{
 
     ChangeSelectedLocation(id){
 
-        var base_url = baseUrl;
-        axios.post(base_url+'/code',{
-            locationid: id
-        })
-        .then( response => {
+        // var base_url = baseUrl;
+        // axios.post(base_url+'/code',{
+        //     locationid: id
+        // })
+        // .then( response => {
             
-        }, 
-        error => {
-          this.setState({
-            hidden: true,
-            errmsg: error.response.data.message
-          });
-          alert("Session Expired");
-          this.props.clickit('/logout');
-        })
-        .catch(error => {
-            this.setState({
-                hidden: true,
-                errmsg: error.response.data.message
-            });
-            alert("Session Expired");
-            this.props.clickit('/logout');
-        });
+        // }, 
+        // error => {
+        //   this.setState({
+        //     hidden: true,
+        //     errmsg: error.response.data.message
+        //   });
+        //   alert("Session Expired");
+        //   this.props.clickit('/logout');
+        // })
+        // .catch(error => {
+        //     this.setState({
+        //         hidden: true,
+        //         errmsg: error.response.data.message
+        //     });
+        //     alert("Session Expired");
+        //     this.props.clickit('/logout');
+        // });
 
 
 
@@ -199,7 +199,11 @@ class ViewCode extends Component{
                                         <Loading />
                                     </div>
                                     <div  hidden={(this.state.codeshow) ? '' : "hidden"}>
-                                        {this.state.code}
+                                        <div>
+                                            {this.state.code.split("<br>").map((i,key) => {
+                                                return <div key={key}>{i}</div>;
+                                            })}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
