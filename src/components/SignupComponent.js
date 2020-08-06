@@ -13,17 +13,51 @@ class Signup extends Component{
     constructor(props){
         super(props);
         this.state = {
-          hidden: true
+          hidden: true,
+          companylogo: null
         };
         this.handleSignup = this.handleSignup.bind(this);
+        this.changeCompanyLogo = this.changeCompanyLogo.bind(this);
+        this.returncompanylogo = this.returncompanylogo.bind(this);
     }
 
-    handleSignup(event) {
+    async changeCompanyLogo(event){
+      await this.setState({
+        companylogo: event.target.files[0]
+      });
+      console.log('this.state.companylogo');
+      console.log(this.state.companylogo);
+      //console.log(event.target.files[0])
+    }
+
+    returncompanylogo(){
+      return this.state.companylogo;
+    }
+
+    async handleSignup(event) {
+        event.preventDefault();
         this.setState({
           hidden: false,
           errmsg: ""
         });
 
+        const companylogo = new FormData();
+       await companylogo.append('file', 'this.state.companylogo');
+
+        // console.log("companylogo : ");
+        // console.log(companylogo);
+
+        // console.log("this.state.companylogo : ");
+        // console.log(this.state.companylogo);
+
+        // console.log("compnaylogo obj : ");
+        // console.log(companylogo);
+
+        // const config = {
+        //   headers: {
+        //     'content-type': 'multipart/form-data'
+        //   }
+        // };
         const base_url = baseUrl;
         axios.post(base_url+'/users/signup',{
           username: this.username.value,
@@ -33,12 +67,15 @@ class Signup extends Component{
           usertype: 'admin',
           typeofdatabase: 'shared',
           userpic: 'user pic url',
-          companylogo: 'company logo url',
+          companylogo: 'company logo pic',
           parentid: 'no parent for admin user'
-        })
+        }
+        )
         .then( response => {
+            console.log(response);
             this.setState({
-              hidden: true
+              hidden: true,
+              errmsg: response.data.message
             });
             this.props.clickit('/login/true')
         }, (err) => {
@@ -52,7 +89,7 @@ class Signup extends Component{
         });
           
         //alert("Username: " + this.username.value + " Password: " + this.password.value);
-        event.preventDefault();
+        
     }
 
     render(){
@@ -71,7 +108,7 @@ class Signup extends Component{
                 <div class="card-header">
                   <h3 class="card-title">Signup with us...</h3>
                 </div>
-                <form onSubmit={this.handleSignup}>
+                <form onSubmit={this.handleSignup} >
                   <div class="card-body">
                     <div class="form-group">
                       <label for="companyname">Company Name</label>
@@ -99,15 +136,8 @@ class Signup extends Component{
                     </div>
                     <div class="form-group">
                       <label for="exampleInputFile">Admin Picture</label>
-                      <div class="input-group">
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="exampleInputFile" />
-                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                          <span class="input-group-text" id="">Upload</span>
-                        </div>
-                      </div>
+                      <br />
+                      <input  type="file" name="file"/>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputFile2">Compoany Logo</label>

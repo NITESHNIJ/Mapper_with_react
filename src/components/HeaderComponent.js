@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import imageUrl1 from "../images/add_data.jpg";
 import imageUrl2 from "../images/map.jpg";
+import { baseUrl } from '../baseUrl';
 
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
   Button,
