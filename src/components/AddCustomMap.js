@@ -10,25 +10,24 @@ class AddCustomMap extends Component {
         name: '',
         map: '',
         formdata: new FormData(),
-        theInputKey:''
+        theInputKey: ''
     }
     functionThatResetsTheFileInput() {
         let randomString = Math.random().toString(36);
-      
+
         this.setState({
-          theInputKey: randomString
+            theInputKey: randomString
         });
-      }
+    }
     handleChange = (name) => (value) => {
         this.setState(() => ({ [name]: value }));
         this.state.formdata.set(name, value);
     }
     submit = async (e) => {
         e.preventDefault();
-        this.setState(()=>({loading:true,error:false,success:false}));
-        if(this.state.name==='')
-        {
-            this.setState(()=>({loading:false,error:'Fill All the Fields'}));
+        this.setState(() => ({ loading: true, error: false, success: false }));
+        if (this.state.name === '' ) {
+            this.setState(() => ({ loading: false, error: 'Fill All the Fields' }));
         }
         let token = await localStorage.getItem('token');
         await fetch(`${baseUrl}/custommap`, {
@@ -39,40 +38,40 @@ class AddCustomMap extends Component {
             },
             body: this.state.formdata
         })
-        .then(async (data1) => {
-                let data=await data1.json();
+            .then(async (data1) => {
+                let data = await data1.json();
                 console.log(data);
                 if (data.error) {
-                    this.setState(() => ({ error: data.error, loading: false,name:''}));
+                    this.setState(() => ({ error: data.error, loading: false, name: '' }));
                     this.functionThatResetsTheFileInput();
                     return;
                 }
                 else {
-                    this.setState(() => ({ success:"Map Uploaded SuccesFully", loading: false, formData: new FormData() }));
+                    this.setState(() => ({ success: "Map Uploaded SuccesFully", loading: false, formData: new FormData() }));
                     this.functionThatResetsTheFileInput();
-                 
+
                 }
             })
-            .catch(err => this.setState({ error: 'some error occured,Try Again', loading: false,name:''}))
+            .catch(err => this.setState({ error: 'some error occured,Try Again', loading: false, name: '' }))
 
     }
     loadingMesaage = () => {
         if (this.state.loading) {
-            return (<div className="alert alert-info" style={{ display: this.state.loading ? '' : 'none' }}>
+            return (<div className="alert alert-info mt-5" style={{ display: this.state.loading ? '' : 'none' }}>
                 Uploading...
             </div>)
         }
     }
     successMesaage = () => {
         if (this.state.success) {
-            return (<div className="alert alert-success" style={{ display: this.state.success ? '' : 'none' }}>
+            return (<div className="alert alert-success mt-5" style={{ display: this.state.success ? '' : 'none' }}>
                 Map Uploaded Successfully
             </div>)
         }
     }
     errorMesaage = () => {
         if (this.state.error) {
-            return (<div className="alert alert-danger" style={{ display: this.state.error ? '' : 'none' }}>
+            return (<div className="alert alert-danger mt-5" style={{ display: this.state.error ? '' : 'none' }}>
                 {this.state.error}
             </div>)
         }
@@ -82,10 +81,10 @@ class AddCustomMap extends Component {
         return (
             <div className="content-wrapper">
                 <Container fluid>
-                    <div class="content-header">
-                        <div class="container-fluid">
-                            <div class="row mb-2">
-                                <div class="col-sm-6">
+                    <div className="content-header bg-warning">
+                        <div className="container-fluid">
+                            <div className="row row justify-content-center mb-2">
+                                <div style={{ display: 'flex', justifyContent: 'center' }} className="col-sm-6 ">
                                     <h1 class="m-0 text-dark">Upload Custom Maps here</h1>
                                 </div>
                             </div>
@@ -96,19 +95,22 @@ class AddCustomMap extends Component {
                     {this.loadingMesaage()}
                     <Form>
                         <FormGroup>
-                            <Label for="exampleEmail">Name of Map</Label>
+                            <Label size="lg" for="exampleEmail">Name of Map</Label>
                             <Input value={this.state.name} onChange={(e) => this.handleChange("name")(e.target.value)} type="text" name="email" id="exampleEmail" placeholder="Name" />
 
                         </FormGroup>
+
                         <FormGroup>
-                            <Label for="exampleFile">File</Label>
+
+                            <Label size="lg" for="exampleFile">File</Label>
                             <Input key={this.state.theInputKey} onChange={(e) => this.handleChange("map")(e.target.files[0])} type="file" name="file" id="exampleFile" />
                             <FormText color="muted">
                                 Upload Your Custom map here
                         </FormText>
                         </FormGroup>
                     </Form>
-                    <Button onClick={this.submit} style={{ textAlign: 'center' }}>Upload</Button>
+
+                    <Button block  color="primary" onClick={this.submit} style={{ justifyContent: 'center' }}>Upload</Button>
 
                 </Container>
             </div>
