@@ -10,12 +10,16 @@ import Logout from './LogoutComponent';
 
 import Dashboard from './DashboardComponent';
 import ViewCode from './ViewCodeComponent';
-import Map from './MapComponent';
+import GlobalMap from './GlobalMapComponent';
+import ViewMap from './ViewMapComponent';
+import ViewCustomMaps from './ViewCustomMapsComponent';
 import CreateAlert from './CreateAlertComponent';
-import AddLocation from './AddLocationComponent';
+import AddLocationGlobal from './AddLocationComponentGlobal';
+import AddLocationMid from './AddLocationMid';
 import CreateSensor from './CreateSensorComponent';
 import AddSensor from './AddSensorComponent';
 import AddUser from './AddUserComponent';
+import DisplayCustomMaps from './DisplayCustomMapsComponent';
 
 // for local user :
 import LocalHeader from './LocalHeaderComponent';
@@ -118,13 +122,17 @@ class Main extends Component{
                                 <Route path="/logout" component={() => <Logout clickit={(loc) => this.pusher(loc)} emptystore={this.props.emptystore}/>} />
                                 <Route path="/dashboard" component={() => <Dashboard clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/view_code" component={() => <ViewCode clickit={(loc) => this.pusher(loc)} />} />
-                                <Route path="/map" component={() => <Map clickit={(loc) => this.pusher(loc)} />} />
+                                <Route path="/map" component={() => <ViewMap clickit={(loc) => this.pusher(loc)} />} />
+                                <Route path="/global_map" component={() => <GlobalMap clickit={(loc) => this.pusher(loc)} />} />
+                                <Route path="/view_custom_map" component={() => <ViewCustomMaps clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/create_alert" component={() => <CreateAlert clickit={(loc) => this.pusher(loc)} />} />
-                                <Route path="/add_location" component={() => <AddLocation clickit={(loc) => this.pusher(loc)} />} />
+                                <Route path="/add_location" component={() => <AddLocationMid clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/create_sensor" component={() => <CreateSensor clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/add_sensor" component={() => <AddSensor clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/add_user" component={() => <AddUser clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/add_custommap" component={() => <AddCustomMap clickit={(loc) => this.pusher(loc)} />} /> 
+                                <Route path="/add_location_global" component={() => <AddLocationGlobal clickit={(loc) => this.pusher(loc)} />} />
+                                <Route path="/custom_maps" component={() => <DisplayCustomMaps clickit={(loc) => this.pusher(loc)} />} />
                                 <Redirect to="/dashboard" />
                             </Switch>
                             <Footer />
@@ -142,7 +150,9 @@ class Main extends Component{
                                 <Switch>
                                     <Route path="/logout" component={() => <Logout clickit={(loc) => this.pusher(loc)} emptystore={this.props.emptystore}/>} />
                                     <Route path="/localdashboard" component={() => <LocalDashboard clickit={(loc) => this.pusher(loc)} />} />
-                                    <Route path="/map" component={() => <Map clickit={(loc) => this.pusher(loc)} />} />
+                                    <Route path="/map" component={() => <ViewMap clickit={(loc) => this.pusher(loc)} />} />
+                                    <Route path="/global_map" component={() => <GlobalMap clickit={(loc) => this.pusher(loc)} />} />
+                                    <Route path="/view_custom_map" component={() => <ViewCustomMaps clickit={(loc) => this.pusher(loc)} />} />
                                     <Route path="/create_alert" component={() => <CreateAlert clickit={(loc) => this.pusher(loc)} />} />
                                     <Redirect to="/localdashboard" />
                                 </Switch>

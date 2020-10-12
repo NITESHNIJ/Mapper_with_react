@@ -29,6 +29,7 @@ class AddLocation extends Component{
         }
         const base_url = baseUrl;
         axios.post(base_url+'/location',{
+            mapid: 'global',
             latitude: this.latitude.value,
             longitude: this.longitude.value,
             name: this.name.value,

@@ -148,8 +148,10 @@ class CreateSensor extends Component{
                                         <Label><span style={{color: "black"}}>Choose the type of Sensor</span></Label>
                                         <br />
                                         <select onChange={this.sensor_type_change}>
-                                            <option value="first value">First Value</option>
-                                            <option value="second value">Second Value</option>
+                                            <option value="first value">Temprature Sensor</option>
+                                            <option value="second value">Pressure Sensor</option>
+                                            <option value="second value">Audio Sensor</option>
+                                            <option value="second value">Video Camera</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
