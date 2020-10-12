@@ -1,3 +1,6 @@
+.welcome_jumbo{
+  margin: auto;
+}
 .App {
   text-align: center;
 }
@@ -60,9 +63,6 @@ td{
 #carousel{
   margin: auto;
 }
-#welcome{
-  text-align: center;
-}
 .content{
   padding-top: 55px;
   text-align: center;
@@ -82,11 +82,11 @@ td{
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: aliceblue; */
-  background-image: url('./images/welcome.jpg');
-  height: 100vh;
+  background-image: url('./images/app_logo.png');
+  /* height: 100vh; */
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  /* background-size: cover; */
 }
 
 .App-logo {
