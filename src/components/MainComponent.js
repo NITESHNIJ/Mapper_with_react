@@ -35,6 +35,7 @@ import axios from "axios";
 import { baseUrl } from '../baseUrl';
 import { Loading } from './LoadingComponent';
 import Demo from './DemoComponent';
+import AddCustomMap from './AddCustomMap';
 
 const mapStateToProps = (state,{history}) => {
     return{
@@ -123,6 +124,7 @@ class Main extends Component{
                                 <Route path="/create_sensor" component={() => <CreateSensor clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/add_sensor" component={() => <AddSensor clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/add_user" component={() => <AddUser clickit={(loc) => this.pusher(loc)} />} />
+                                <Route path="/add_custommap" component={() => <AddCustomMap clickit={(loc) => this.pusher(loc)} />} /> 
                                 <Redirect to="/dashboard" />
                             </Switch>
                             <Footer />
