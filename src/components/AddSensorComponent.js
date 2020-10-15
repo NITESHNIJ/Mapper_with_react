@@ -42,6 +42,7 @@ function RenderLocations(props){
                     <div class="card bg-info" style={{border: (location._id == props.selected_location)?"solid black 15px":"solid white 15px"}} onClick={() => props.ChangeSelectedLocation(location._id)}>
                         <div class="card-body">
                             <h5 class="card-title">{location.name}</h5>
+                            <p class="card-text">Map Name : {location.map_name}</p>
                             <p class="card-text">Latitude : {location.latitude}</p>
                             <p class="card-text">Longitude : {location.longitude}</p>
                         </div>

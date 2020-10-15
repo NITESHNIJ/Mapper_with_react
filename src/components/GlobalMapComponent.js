@@ -213,7 +213,7 @@ class Maps extends Component{
 
   componentDidMount(){
     let base_url = baseUrl;
-      axios.get(base_url+'/location', {
+      axios.get(base_url+'/location/global', {
           headers: {
               Authorization: 'Bearer ' + localStorage.getItem('token')
           }

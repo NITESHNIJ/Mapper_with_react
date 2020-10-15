@@ -33,6 +33,7 @@ function RenderOuterList(props){
             return(
                 <li>
                     <h3> {location.name} </h3>
+                    <p> Map Name : {location.map_name}</p>
                     <p> Lat: {location.latitude}, Lng: {location.longitude}</p>
                     <ul>
                         <RenderInnerList instances={location.sensinst} handleChange={props.handleChange}/>
