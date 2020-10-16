@@ -17,6 +17,7 @@ import ViewCustomMapWithId from './ViewCustomMapWithIdComponent';
 import CreateAlert from './CreateAlertComponent';
 import AddLocationGlobal from './AddLocationComponentGlobal';
 import AddLocationMid from './AddLocationMid';
+import LocationCustomMapWithId from './LocationCustomMapWithIdComponent';
 import CreateSensor from './CreateSensorComponent';
 import AddSensor from './AddSensorComponent';
 import AddUser from './AddUserComponent';
@@ -120,6 +121,11 @@ class Main extends Component{
                         <ViewCustomMapWithId match={props.match.params.mapid} clickit={(loc) => this.pusher(loc)} />
                     );
                 }
+                const LocationCustomMapWithIdMid = (props)=>{
+                    return(
+                        <LocationCustomMapWithId match={props.match.params.mapid} clickit={(loc) => this.pusher(loc)} />
+                    );
+                }
                 return(
                     <div className="hold-transition sidebar-mini layout-fixed">
                         <div class="wrapper">
@@ -138,6 +144,7 @@ class Main extends Component{
                                 <Route path="/add_user" component={() => <AddUser clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/add_custommap" component={() => <AddCustomMap clickit={(loc) => this.pusher(loc)} />} /> 
                                 <Route path="/add_location_global" component={() => <AddLocationGlobal clickit={(loc) => this.pusher(loc)} />} />
+                                <Route path="/location_custom_map/:mapid" component={LocationCustomMapWithIdMid} />
                                 <Route path="/custom_maps" component={() => <DisplayCustomMaps clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/map_with_id/:mapid" component={ViewCustomMapWithIdMid} />
                                 <Redirect to="/dashboard" />

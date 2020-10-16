@@ -39,6 +39,7 @@ function RenderMaps(props){
                             <img class="card-img-top" src={baseUrl + map.path} alt="Card image cap" />
                             <div class="card-body">
                                 <h5 class="card-text">{map.name}</h5>
+                                <a onClick={() => {props.clickit(`/location_custom_map/${map._id}`)}} style={{color: 'white',cursor:'pointer'}} class="btn btn-primary">Add Location</a>
                             </div>
                         </div>
                 );
@@ -104,7 +105,7 @@ class CustomMaps extends Component{
 
                 <section class="content">
                     <div class="container-fluid">
-                        <RenderMaps maps={this.state.maps}></RenderMaps>
+                        <RenderMaps maps={this.state.maps} clickit={this.props.clickit}></RenderMaps>
                     </div>
                 </section>
             </div>
