@@ -13,6 +13,7 @@ import ViewCode from './ViewCodeComponent';
 import GlobalMap from './GlobalMapComponent';
 import ViewMap from './ViewMapComponent';
 import ViewCustomMaps from './ViewCustomMapsComponent';
+import ViewCustomMapWithId from './ViewCustomMapWithIdComponent';
 import CreateAlert from './CreateAlertComponent';
 import AddLocationGlobal from './AddLocationComponentGlobal';
 import AddLocationMid from './AddLocationMid';
@@ -114,6 +115,11 @@ class Main extends Component{
 
         if(localStorage.getItem('token')){
             if(this.props.store.usertype == 'admin'){
+                const ViewCustomMapWithIdMid = (props)=>{
+                    return(
+                        <ViewCustomMapWithId match={props.match.params.mapid} clickit={(loc) => this.pusher(loc)} />
+                    );
+                }
                 return(
                     <div className="hold-transition sidebar-mini layout-fixed">
                         <div class="wrapper">
@@ -133,6 +139,7 @@ class Main extends Component{
                                 <Route path="/add_custommap" component={() => <AddCustomMap clickit={(loc) => this.pusher(loc)} />} /> 
                                 <Route path="/add_location_global" component={() => <AddLocationGlobal clickit={(loc) => this.pusher(loc)} />} />
                                 <Route path="/custom_maps" component={() => <DisplayCustomMaps clickit={(loc) => this.pusher(loc)} />} />
+                                <Route path="/map_with_id/:mapid" component={ViewCustomMapWithIdMid} />
                                 <Redirect to="/dashboard" />
                             </Switch>
                             <Footer />
@@ -143,6 +150,11 @@ class Main extends Component{
             }
             else{
                 if(this.props.store.usertype == 'localuser'){
+                    const ViewCustomMapWithIdMid = (props)=>{
+                        return(
+                            <ViewCustomMapWithId match={props.match.params.mapid} clickit={(loc) => this.pusher(loc)} />
+                        );
+                    }
                     return(
                         <div className="hold-transition sidebar-mini layout-fixed">
                             <div class="wrapper">
@@ -154,6 +166,7 @@ class Main extends Component{
                                     <Route path="/global_map" component={() => <GlobalMap clickit={(loc) => this.pusher(loc)} />} />
                                     <Route path="/view_custom_map" component={() => <ViewCustomMaps clickit={(loc) => this.pusher(loc)} />} />
                                     <Route path="/create_alert" component={() => <CreateAlert clickit={(loc) => this.pusher(loc)} />} />
+                                    <Route path="/map_with_id/:mapid" component={ViewCustomMapWithIdMid} />
                                     <Redirect to="/localdashboard" />
                                 </Switch>
                                 <Footer />
