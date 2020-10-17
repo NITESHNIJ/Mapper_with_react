@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ScriptTag from 'react-script-tag';
 
-import imageUrl1 from "../images/add_data.jpg";
-import imageUrl2 from "../images/map.jpg";
+import imageUrl1 from "../images/global_map.jpg";
+import imageUrl2 from "../images/custom_map.jpg";
 
 import { baseUrl } from '../baseUrl';
 
