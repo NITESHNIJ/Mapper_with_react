@@ -188,7 +188,6 @@ class ViewCustomMapWithId extends Component {
       };
       clicked = async (area) => {
        await this.markerClicked(area.name);
-       // await this.markerClicked('5f8990d33e5f242ac8305a6a');
         this.atag.click();
         await this.setState({
           msg: `You clicked on ${area.shape} at coords ${JSON.stringify(
@@ -197,26 +196,6 @@ class ViewCustomMapWithId extends Component {
         });
       };
       clickedOutside = async (evt) => {
-        // let areas = this.state.MAP.areas;
-        // let newareas = [
-        //   ...areas,
-        //   {
-        //     name: "clicked",
-        //     shape: "circle",
-        //     coords: [evt.nativeEvent.layerX, evt.nativeEvent.layerY, 5],
-        //     preFillColor: "purple",
-        //     fillColor: "black"
-        //   }
-        // ];
-        // const coords = { x: evt.nativeEvent.layerX, y: evt.nativeEvent.layerY };
-        // this.setState({
-        //   msg: `You clicked on the image at coords ${JSON.stringify(coords)} !`
-        // });
-        // let MAP = {
-        //   name: this.state.MAP.name,
-        //   areas: newareas
-        // };
-        // await this.setState(() => ({ MAP }));
       };
       moveOnImage = (evt) => {
         const coords = { x: evt.nativeEvent.layerX, y: evt.nativeEvent.layerY };
@@ -352,35 +331,17 @@ class ViewCustomMapWithId extends Component {
             return (<Loading />);
         }
         return (
-            // <div class="content-wrapper">
-            //     <div class="content-header">
-            //         <div class="container-fluid">
-            //             <div class="row mb-2">
-            //                 <div class="col-sm-6">
-            //                     <h1 class="m-0 text-dark">Dashboard</h1>
-            //                 </div>
-            //             </div>
-            //         </div>
-            //     </div>
-
-            //     <section class="content">
-            //         <div class="container-fluid">
-            //             Nothing special for now about...
-            //             {this.props.match}
-            //             {JSON.stringify(this.state)}
-            //         </div>
-            //     </section>
-            // </div>
             <React.Fragment>
-                <div class="content-wrapper">
-                    <section class="content">
-                        <div class="container-fluid">
-                         <div style={{ width: '800px',height:'800px', border: '2px solid black' }}>
+                <div class="content-wrapper" style={{overflow:"scroll" }}>
+                    <section class="content" >
+                        <div class="container-fluid" >
+                         <div style={{ width: '800px',height:'600px'}}>
                            <ImageMapper
                            src={baseUrl + this.state.map.path}
                            map={this.state.MAP}
                            width={800}
-                           height={800}
+                           height={600}
+                           overflow={'scroll'}
                            onLoad={() => this.load()}
                            onClick={(area) => this.clicked(area)}
                            onMouseEnter={(area) => this.enterArea(area)}

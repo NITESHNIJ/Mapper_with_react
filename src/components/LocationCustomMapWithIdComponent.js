@@ -168,9 +168,6 @@ class ViewCustomMapWithId extends Component {
           modal: false,
           name: ''
         });
-        // this.latitude.value = '';
-        // this.longitude.value = '';
-        //this.setState(() => ({ location: null,modal:false}));
 
       },
         error => {
@@ -262,7 +259,7 @@ class ViewCustomMapWithId extends Component {
     }
     return (
       <React.Fragment>
-        <div class="content-wrapper">
+        <div class="content-wrapper" style={{overflow:"scroll" }}>
           <section class="content">
             <div class="container-fluid">
               <Modal isOpen={this.state.modal} toggle={this.toggle}>
@@ -301,12 +298,12 @@ class ViewCustomMapWithId extends Component {
               {this.successMesaage()}
               {this.errorMesaage()}
               {this.loadingMesaage()}
-              <div style={{ width: '800px',height:'800px', border: '2px solid black' }}>
+              <div style={{ width: '800px',height:'600px'}}>
                 <ImageMapper
                   src={baseUrl + this.state.map.path}
                   map={this.state.MAP}
                   width={800}
-                  height={800}
+                  height={600}
                   onLoad={() => this.load()}
                   onClick={(area) => this.clicked(area)}
                   onMouseEnter={(area) => this.enterArea(area)}
