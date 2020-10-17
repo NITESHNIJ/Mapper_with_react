@@ -90,7 +90,7 @@ class AddLocation extends Component{
                     <div class="card card-secondary">
                         <div class="card-header">
                             <h3 class="card-title">Add Location...</h3>
-                        </div>
+                        </div>                        
                         <form role="form" onSubmit={this.handleData}>
                             <div class="card-body">
                                 <div class="form-group">

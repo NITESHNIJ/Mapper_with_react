@@ -375,10 +375,12 @@ class ViewCustomMapWithId extends Component {
                 <div class="content-wrapper">
                     <section class="content">
                         <div class="container-fluid">
+                         <div style={{ width: '800px',height:'800px', border: '2px solid black' }}>
                            <ImageMapper
                            src={baseUrl + this.state.map.path}
                            map={this.state.MAP}
-                           width={400}
+                           width={800}
+                           height={800}
                            onLoad={() => this.load()}
                            onClick={(area) => this.clicked(area)}
                            onMouseEnter={(area) => this.enterArea(area)}
@@ -391,6 +393,7 @@ class ViewCustomMapWithId extends Component {
                            >
                            
                         </ImageMapper>
+                        </div>
                         <a style={{display:'none'}} ref={a => this.atag = a}class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
                       <button type="button" class="btn btn-primary">Readings</button>
                        </a>
