@@ -4,16 +4,12 @@ import { baseUrl } from '../baseUrl';
 import { Col, Button, Form, FormGroup, Input, Label, FormText } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
-//import Carousel from 'react-elastic-carousel'
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from 'react-responsive-carousel';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 function RenderLocations(props){
     const responsive = {
         superLargeDesktop: {
-          // the naming can be any, depends on you.
           breakpoint: { max: 4000, min: 3000 },
           items: 5
         },
