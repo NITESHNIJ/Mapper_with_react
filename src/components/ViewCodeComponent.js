@@ -108,36 +108,6 @@ class ViewCode extends Component{
 
     ChangeSelectedLocation(id){
 
-        // var base_url = baseUrl;
-        // axios.post(base_url+'/code',{
-        //     locationid: id
-        // })
-        // .then( response => {
-            
-        // }, 
-        // error => {
-        //   this.setState({
-        //     hidden: true,
-        //     errmsg: error.response.data.message
-        //   });
-        //   alert("Session Expired");
-        //   this.props.clickit('/logout');
-        // })
-        // .catch(error => {
-        //     this.setState({
-        //         hidden: true,
-        //         errmsg: error.response.data.message
-        //     });
-        //     alert("Session Expired");
-        //     this.props.clickit('/logout');
-        // });
-
-
-
-
-
-
-
         console.log("ChangeSelectedLocation : "+id);
         this.setState({
             selected_location: id
