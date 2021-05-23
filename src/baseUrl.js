@@ -1,2 +1,2 @@
-export let baseUrl = 'https://leveltracker.azurewebsites.net';
-//export let baseUrl = 'http://localhost:8000';
+//export let baseUrl = 'https://leveltracker.azurewebsites.net';
+export let baseUrl = 'https://iotmapper.herokuapp.com';
