@@ -114,23 +114,7 @@ class Signup extends Component{
                         <option >Individual</option>
                       </select>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile">Admin Picture</label>
-                      <br />
-                      <input type="file" name="file"/>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile2">Compoany Logo</label>
-                      <div class="input-group">
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="exampleInputFile2" />
-                          <label class="custom-file-label" for="exampleInputFile2">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                          <span class="input-group-text" id="">Upload</span>
-                        </div>
-                      </div>
-                    </div>
+                    
                   </div>
 
                   <div class="card-footer">
