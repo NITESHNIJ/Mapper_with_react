@@ -28,7 +28,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "4.2.2",
     "react-script-tag": "^1.1.2",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "react-sidebar": "^3.0.2",
     "reactstrap": "5.0.0",
     "redux": "3.7.2",
